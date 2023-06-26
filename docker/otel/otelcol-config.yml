@@ -1,0 +1,37 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+
+exporters:
+  logging:
+  otlp:
+    endpoint: "jaeger:4317"
+    tls:
+      insecure: true
+  kafka:
+    brokers:
+      - kafka0:29092
+    protocol_version: 3.2.0
+    encoding: otlp_json
+  prometheus:
+    endpoint: 0.0.0.0:9464
+
+processors:
+  batch:
+    send_batch_size: 1000
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging, otlp, kafka]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging, prometheus, kafka]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging, kafka]

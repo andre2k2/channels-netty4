@@ -44,7 +44,7 @@ public class SocketChannels {
         publisher.start();
         subscriber.start();
 
-        serverBootstrap.bind(8888)
+        serverBootstrap.bind(4444)
         	.sync().channel().closeFuture().sync();
     }
 

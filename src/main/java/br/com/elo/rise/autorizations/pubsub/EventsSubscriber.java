@@ -40,6 +40,18 @@ public class EventsSubscriber extends Thread {
 
     	Properties properties = new Properties();
     	properties.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
+
+//    	properties.setProperty("bootstrap.servers","pkc-n98pk.us-west-2.aws.confluent.cloud:9092");
+//        properties.setProperty("security.protocol","SASL_SSL");
+//        properties.setProperty("sasl.jaas.config","org.apache.kafka.common.security.plain.PlainLoginModule required username='TRSW4OBVDC75USGY' password='YngDHYbC+rLONzlAKEGiZB21gdQkI82U77c6AX+X3okjPW7c2lu4PzhZM0fZbKnx';");
+//        properties.setProperty("sasl.mechanism","PLAIN");
+//        properties.setProperty("client.dns.lookup","use_all_dns_ips");
+//        properties.setProperty("session.timeout.ms","45000");
+//        properties.setProperty("acks","all");
+//        properties.setProperty("schema.registry.url","https://psrc-mw731.us-east-2.aws.confluent.cloud");
+//        properties.setProperty("basic.auth.credentials.source","USER_INFO");
+//        properties.setProperty("basic.auth.user.info","PLNCGD7KVGUY7C7B:hXFYUj0D7JzvWnFh9MN2nD4s+vM5XkrvIbzjxTxMfxONS+r8DNqNu+B2G/22qEP3");
+
     	properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, "channel-out");
         properties.setProperty(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, ByteArrayDeserializer.class.getName());
         properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ByteArrayDeserializer.class.getName());
